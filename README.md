@@ -2,17 +2,26 @@
 
 ## 1. Video Link
 
->
+* 
 
 ## 2. Overview
 
 Bob’s Corn is a full-stack application that enforces a business rule:
 
-> **A client can only buy 1 corn per minute**
+**A client can only buy 1 corn per minute**
 
+![btn enabled](images/btn-enabled.png)
+![btn disabled](images/btn-disabled.png)
 ---
 
-## 3. Architecture
+---
+## 3. Concurrent Problem For the Same Client
+
+![concurrency problem](images/concurrency-problem.png)
+
+## 4. Architecture
+
+![high level architecture](images/high-level-architecture.png)
 
 ### 3.a Backend
 
@@ -25,9 +34,31 @@ Bob’s Corn is a full-stack application that enforces a business rule:
 * Angular (standalone components)
 * Reactive UI with cooldown timer
 
----
+## 5. Solution
 
-## 4. Features
+### 5.a transaction locking
+
+![solution transaction locking](images/solution-transaction-locking.png)
+
+### 5.b serializable isolation
+
+![serializable isolation](images/serializable-isolation.png)
+
+### 5.c deadlock scenario
+
+![deadlock scenario](images/deadlock-scenario.png)
+
+### 5.d retry strategy
+
+Deadlocks are expected in high concurrency systems, so we handle them with retries currency tests
+
+![retry strategy](images/retry-strategy.png)
+
+### 5.e concurrency test 
+
+![concurrency test](images/concurrency-test.png)
+
+## 6. Features
 
 * Rate limiting per client
 * Cooldown feedback (frontend)
@@ -36,17 +67,17 @@ Bob’s Corn is a full-stack application that enforces a business rule:
 
 ---
 
-## 5. Testing
+## 7. Testing
 
 * Unit tests with xUnit and Moq
 * Controller tests (HTTP behavior)
 * Edge cases covered (rate limit, headers)
-
+* Integration tests for test concurrency
 ---
 
-## 6. How to Run
+## 8. How to Run
 
-### Backend
+### 8.a Backend
 
 requirements:
 * SDK .NET 8
@@ -56,7 +87,7 @@ cd BobCorn.API
 dotnet run
 ```
 
-### Frontend
+### 8.b Frontend
 
 requirements:
 
@@ -72,7 +103,7 @@ npm run start
 
 ---
 
-## 7. Database (SQL Server)
+## 9. Database (SQL Server)
 
 Create database:
 
@@ -102,7 +133,7 @@ CREATE TABLE ClientPurchaseState (
 
 ---
 
-## 8. Postman Collection Requests
+## 10. Postman Collection Requests
 ---
 
 Postman 200 OK
@@ -115,7 +146,7 @@ Postman 429 Too Many Requests
 
 ---
 
-## 9. Design Decisions
+## 11. Design Decisions
 
 * Separate read model (`ClientPurchaseState`) for performance
 * Use Dapper for lightweight data access
@@ -124,7 +155,6 @@ Postman 429 Too Many Requests
 
 ---
 
-
-## 10. Code Challenge Reference:
+## 12. Code Challenge Reference:
 
 - https://coda.io/d/Shared-Software-Engineer-Challenge_dyBwZvKLrdE/Challenge-Software-Engineer_suydMA8O#_luFSdSnr
