@@ -4,17 +4,19 @@
     {
         public bool IsSuccess { get; }
         public DateTimeOffset? NextAllowedAt { get; }
+        public int TotalPurchased { get; }
 
-        private PurchaseResult(bool isSuccess, DateTimeOffset? nextAllowedAt)
+        private PurchaseResult(bool isSuccess, DateTimeOffset? nextAllowedAt, int totalPurchased)
         {
             IsSuccess = isSuccess;
             NextAllowedAt = nextAllowedAt;
+            TotalPurchased = totalPurchased;
         }
 
-        public static PurchaseResult Success(DateTimeOffset nextAllowedAt)
-            => new(true, nextAllowedAt);
+        public static PurchaseResult Success(DateTimeOffset nextAllowedAt, int total)
+            => new(true, nextAllowedAt, total);
 
-        public static PurchaseResult Failure(DateTimeOffset nextAllowedAt)
-            => new(false, nextAllowedAt);
+        public static PurchaseResult Failure(DateTimeOffset nextAllowedAt, int total)
+            => new(false, nextAllowedAt, total);
     }
 }

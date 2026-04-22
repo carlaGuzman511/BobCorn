@@ -1,15 +1,12 @@
 using BobCorn.Application.Abstractions.Persistence;
-using BobCorn.Application.Abstractions.Time;
 using BobCorn.Application.UseCases.PurchaseCorn;
 using BobCorn.Infrastructure.Adapters;
-using BobCorn.Infrastructure.Time;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddScoped<ICornPurchaseRepository, CornPurchaseRepository>();
-builder.Services.AddSingleton<IClock, SystemClock>();
 builder.Services.AddScoped<PurchaseCornHandler>();
 builder.Services.AddScoped<IDbConnectionFactory, SqlConnectionFactory>(); 
 

@@ -1,8 +1,7 @@
 using BobCorn.API.Controllers;
 using BobCorn.Application.Abstractions.Persistence;
-using BobCorn.Application.Abstractions.Time;
 using BobCorn.Application.UseCases.PurchaseCorn;
-]using FluentAssertions;
+using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -11,20 +10,15 @@ namespace BobCorn.API.UnitTests
 {
     public class CornControllerTests
     {
-        private readonly Mock<IDbConnectionFactory> _dbConnectionFactory;
-        private readonly Mock<IClock> _clockMock;
-        private readonly Mock<ICornPurchaseRepository> _cornPurchaseRepositoryMock;
-        private readonly Mock<PurchaseCornHandler> _handlerMock;
+        private readonly Mock<ICornPurchaseRepository> _repositoryMock;
+        private readonly PurchaseCornHandler _handler;
         private readonly CornController _controller;
 
         public CornControllerTests()
         {
-            _dbConnectionFactory = new Mock<IDbConnectionFactory>();
-            _clockMock = new Mock<IClock>();
-            _cornPurchaseRepositoryMock = new Mock<ICornPurchaseRepository>(_dbConnectionFactory.Object);
-            _handlerMock = new Mock<PurchaseCornHandler>(_cornPurchaseRepositoryMock.Object, _clockMock.Object);
-
-            _controller = new CornController(_handlerMock.Object);
+            _repositoryMock = new Mock<ICornPurchaseRepository>();
+            _handler = new PurchaseCornHandler(_repositoryMock.Object);
+            _controller = new CornController(_handler);
 
             _controller.ControllerContext = new ControllerContext
             {
@@ -37,12 +31,17 @@ namespace BobCorn.API.UnitTests
         {
             var clientId = "client-0001";
             var nextAllowedAt = DateTimeOffset.UtcNow.AddMinutes(1);
+            var totalPurchased = 5;
 
             _controller.HttpContext.Request.Headers["X-Client-Id"] = clientId;
 
-            _handlerMock
-                .Setup(x => x.Handle(clientId))
-                .ReturnsAsync(PurchaseResult.Success(nextAllowedAt));
+            _repositoryMock
+               .Setup(r => r.GetTotalPurchasesAsync(clientId))
+               .ReturnsAsync(totalPurchased);
+
+            _repositoryMock
+                .Setup(r => r.TryPurchaseAsync(clientId))
+                .ReturnsAsync((true, nextAllowedAt));
 
             var result = await _controller.Purchase();
 
@@ -51,7 +50,8 @@ namespace BobCorn.API.UnitTests
             okResult!.StatusCode.Should().Be(200);
 
             dynamic body = okResult.Value!;
-            ((int)body.totalPurchased).Should().Be(5);
+            ((int)body.totalPurchased).Should().Be(totalPurchased);
+            ((DateTimeOffset)body.nextAllowedAt).Should().Be(nextAllowedAt);
         }
 
         [Fact]
@@ -59,12 +59,15 @@ namespace BobCorn.API.UnitTests
         {
             var clientId = "client-0001";
             var retryAt = DateTimeOffset.UtcNow.AddSeconds(30);
+            var totalPurchased = 5;
 
-            _controller.HttpContext.Request.Headers["X-Client-Id"] = clientId;
+            _repositoryMock
+                .Setup(r => r.GetTotalPurchasesAsync(clientId))
+                .ReturnsAsync(totalPurchased);
 
-            _handlerMock
-                .Setup(x => x.Handle(clientId))
-                .ReturnsAsync(PurchaseResult.Failure(retryAt));
+            _repositoryMock
+                .Setup(r => r.TryPurchaseAsync(clientId))
+                .ReturnsAsync((false, retryAt));
 
             var result = await _controller.Purchase();
 
@@ -83,12 +86,17 @@ namespace BobCorn.API.UnitTests
             var clientId = "client-0001";
             var now = DateTimeOffset.UtcNow;
             var retryAt = now.AddSeconds(45);
+            var totalPurchased = 5;
 
             _controller.HttpContext.Request.Headers["X-Client-Id"] = clientId;
 
-            _handlerMock
-                .Setup(x => x.Handle(clientId))
-                .ReturnsAsync(PurchaseResult.Failure(retryAt));
+            _repositoryMock
+                .Setup(r => r.GetTotalPurchasesAsync(clientId))
+                .ReturnsAsync(totalPurchased);
+
+            _repositoryMock
+                .Setup(r => r.TryPurchaseAsync(clientId))
+                .ReturnsAsync((false, retryAt));
 
             await _controller.Purchase();
 

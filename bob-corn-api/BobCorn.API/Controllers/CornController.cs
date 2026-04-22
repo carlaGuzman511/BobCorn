@@ -30,6 +30,7 @@ namespace BobCorn.API.Controllers
                 return StatusCode(429, new
                 {
                     message = "Too many requests",
+                    totalPurchased = result.TotalPurchased,
                     nextAllowedAt = result.NextAllowedAt
                 });
             }
@@ -37,6 +38,7 @@ namespace BobCorn.API.Controllers
             return Ok(new
             {
                 message = "Corn purchased",
+                totalPurchased = result.TotalPurchased,
                 nextAllowedAt = result.NextAllowedAt
             });
         }

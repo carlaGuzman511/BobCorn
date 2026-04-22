@@ -1,27 +1,20 @@
-<div class="flex flex-col items-center justify-center h-screen gap-6 bg-gray-50">
-
-  <h1 class="text-3xl font-bold">Bob’s Corn Shop</h1>
-
-  <div class="text-xl">
-    Total Corn Bought: 
-    <span class="font-semibold">{{ totalPurchased }}</span>
+<div class="container">
+  <h1 class="title">Bob’s Corn Shop</h1>
+  <div class="counter">
+    Total Corn Bought:
+    <span class="value">{{ totalPurchased }}</span>
   </div>
-
   <button
     (click)="buyCorn()"
     [disabled]="isLoading || isCooldownActive()"
-    class="px-6 py-3 rounded-xl text-white font-semibold transition
-           bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-400"
+    class="btn-primary"
   >
     {{ isLoading ? 'Buying...' : 'Buy Corn' }}
   </button>
-
-  <div *ngIf="isCooldownActive()" class="text-red-500 text-lg">
+  <div *ngIf="isCooldownActive()" class="status status--error">
     Please wait {{ secondsRemaining }} seconds
   </div>
-
-  <div *ngIf="!isCooldownActive() && !isLoading" class="text-green-600">
+  <div *ngIf="!isCooldownActive() && !isLoading" class="status status--success">
     You can buy corn now!
   </div>
-
-</div> 
+</div>

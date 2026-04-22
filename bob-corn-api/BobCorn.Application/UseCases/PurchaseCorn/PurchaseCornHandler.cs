@@ -1,38 +1,26 @@
-﻿using BobCorn.Application.Abstractions.Persistence;
-using BobCorn.Application.Abstractions.Time;
+﻿using BobCorn.Application.Abstractions.Handlers;
+using BobCorn.Application.Abstractions.Persistence;
 
 namespace BobCorn.Application.UseCases.PurchaseCorn
 {
-    public class PurchaseCornHandler
+    public class PurchaseCornHandler: IPurchaseCornHandler
     {
         private readonly ICornPurchaseRepository _repository;
-        private readonly IClock _clock;
 
-        public PurchaseCornHandler(
-            ICornPurchaseRepository repository,
-            IClock clock)
+        public PurchaseCornHandler(ICornPurchaseRepository repository)
         {
             _repository = repository;
-            _clock = clock;
         }
 
         public async Task<PurchaseResult> Handle(string clientId)
         {
-            var now = _clock.UtcNow;
-
-            var lastPurchase = await _repository.GetLastPurchaseAsync(clientId);
             var total = await _repository.GetTotalPurchasesAsync(clientId);
+            var (success, nextAllowedAt) = await _repository.TryPurchaseAsync(clientId);
 
-            if (lastPurchase.HasValue &&
-                (now - lastPurchase.Value).TotalSeconds < 60)
-            {
-                var retryAt = lastPurchase.Value.AddMinutes(1);
-                return PurchaseResult.Failure(retryAt);
-            }
+            if (!success)
+                return PurchaseResult.Failure(nextAllowedAt, total);
 
-            await _repository.SetLastPurchaseAsync(clientId, now);
-
-            return PurchaseResult.Success(now.AddMinutes(1));
+            return PurchaseResult.Success(nextAllowedAt, total);
         }
     }
 }

@@ -2,8 +2,7 @@
 {
     public interface ICornPurchaseRepository
     {
+        Task<(bool Success, DateTimeOffset NextAllowedAt)> TryPurchaseAsync(string clientId);
         Task<int> GetTotalPurchasesAsync(string clientId);
-        Task<DateTimeOffset?> GetLastPurchaseAsync(string clientId);
-        Task SetLastPurchaseAsync(string clientId, DateTimeOffset time);
     }
 }

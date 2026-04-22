@@ -1,0 +1,69 @@
+$primary-color: #f59e0b;
+$primary-hover: #d97706;
+$success-color: #16a34a;
+$error-color: #dc2626;
+$text-color: #1f2937;
+$bg-color: #f9fafb;
+
+$border-radius: 12px;
+$transition: all 0.2s ease;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 1.5rem;
+  background: $bg-color;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $text-color;
+}
+
+.counter {
+  font-size: 1.25rem;
+  color: $text-color;
+
+  .value {
+    font-weight: 600;
+    margin-left: 0.25rem;
+  }
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  border-radius: $border-radius;
+  border: none;
+  font-weight: 600;
+  color: white;
+  background: $primary-color;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover:not(:disabled) {
+    background: $primary-hover;
+  }
+
+  &:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+  }
+}
+
+.status {
+  font-size: 1.1rem;
+  font-weight: 500;
+
+  &--success {
+    color: $success-color;
+  }
+
+  &--error {
+    color: $error-color;
+  }
+}

@@ -1,5 +1,7 @@
 ﻿using BobCorn.Application.Abstractions.Persistence;
 using Dapper;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace BobCorn.Infrastructure.Adapters
 {
@@ -12,41 +14,6 @@ namespace BobCorn.Infrastructure.Adapters
             _factory = factory;
         }
 
-        public async Task<DateTimeOffset?> GetLastPurchaseAsync(string clientId)
-        {
-            using var connection = _factory.CreateConnection();
-
-            return await connection.QuerySingleOrDefaultAsync<DateTimeOffset?>(
-                @"SELECT LastPurchaseAt 
-                  FROM ClientPurchaseState 
-                  WHERE ClientId = @ClientId",
-                new { ClientId = clientId });
-
-
-        }
-
-
-        public async Task SetLastPurchaseAsync(string clientId, DateTimeOffset time)
-        {
-            using var connection = _factory.CreateConnection();
-
-            var sql = @"
-                IF EXISTS (SELECT 1 FROM ClientPurchaseState WHERE ClientId = @ClientId)
-                    UPDATE ClientPurchaseState
-                    SET LastPurchaseAt = @Time
-                    WHERE ClientId = @ClientId
-                ELSE
-                    INSERT INTO ClientPurchaseState (ClientId, LastPurchaseAt)
-                    VALUES (@ClientId, @Time)";
-
-            await connection.ExecuteAsync(sql, new { ClientId = clientId, Time = time });
-
-            await connection.ExecuteAsync(
-                @"INSERT INTO CornPurchases (Id, ClientId, PurchasedAt)
-              VALUES (@Id, @ClientId, @Time)",
-                new { Id = Guid.NewGuid(), ClientId = clientId, Time = time });
-        }
-
         public async Task<int> GetTotalPurchasesAsync(string clientId)
         {
             using var connection = _factory.CreateConnection();
@@ -54,6 +21,73 @@ namespace BobCorn.Infrastructure.Adapters
             return await connection.ExecuteScalarAsync<int>(
                 @"SELECT COUNT(*) FROM CornPurchases WHERE ClientId = @ClientId",
                 new { ClientId = clientId });
+        }
+
+        public async Task<(bool Success, DateTimeOffset NextAllowedAt)> TryPurchaseAsync(string clientId)
+        {
+            using var connection = _factory.CreateConnection();
+            connection.Open();
+
+            using var transaction = connection.BeginTransaction(IsolationLevel.ReadCommitted);
+
+            try
+            {
+                var now = DateTimeOffset.UtcNow;
+
+                var lastPurchase = await connection.QuerySingleOrDefaultAsync<DateTimeOffset?>(
+                    @"SELECT LastPurchaseAt
+                      FROM ClientPurchaseState WITH (UPDLOCK, ROWLOCK)
+                      WHERE ClientId = @ClientId",
+                    new { ClientId = clientId },
+                    transaction);
+
+                if (lastPurchase.HasValue)
+                {
+                    var nextAllowed = lastPurchase.Value.AddMinutes(1);
+
+                    if (nextAllowed > now)
+                    {
+                        transaction.Rollback();
+                        return (false, nextAllowed);
+                    }
+
+                    await connection.ExecuteAsync(
+                        @"UPDATE ClientPurchaseState
+                          SET LastPurchaseAt = @Now
+                          WHERE ClientId = @ClientId",
+                        new { ClientId = clientId, Now = now },
+                        transaction);
+                }
+                else
+                {
+                    await connection.ExecuteAsync(
+                        @"INSERT INTO ClientPurchaseState (ClientId, LastPurchaseAt)
+                            VALUES (@ClientId, @Now)",
+                        new { ClientId = clientId, Now = now },
+                        transaction);
+                }
+
+                await connection.ExecuteAsync(
+                    @"INSERT INTO CornPurchases (Id, ClientId, PurchasedAt)
+                        VALUES (@Id, @ClientId, @Now)",
+                    new { Id = Guid.NewGuid(), ClientId = clientId, Now = now },
+                    transaction);
+
+                transaction.Commit();
+
+                return (true, now.AddMinutes(1));
+            }
+            catch (SqlException ex) when (ex.Number == 2627)
+            {
+                transaction.Rollback();
+
+                return (false, DateTimeOffset.UtcNow.AddMinutes(1));
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
         }
     }
 }
