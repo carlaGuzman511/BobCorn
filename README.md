@@ -153,8 +153,12 @@ Postman 429 Too Many Requests
 * Frontend handles UX, backend enforces rules
 * Clean separation of concerns
 
+## 12. Unit Testing And Integration Testing 
+
+![testing-coverage](images/testing-coverage.png)
+
 ---
 
-## 12. Code Challenge Reference:
+## 13. Code Challenge Reference:
 
 - https://coda.io/d/Shared-Software-Engineer-Challenge_dyBwZvKLrdE/Challenge-Software-Engineer_suydMA8O#_luFSdSnr
