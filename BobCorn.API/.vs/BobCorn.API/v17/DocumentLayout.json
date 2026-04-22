@@ -1,0 +1,192 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{198D40C8-29A5-4B1C-A349-24FE11477616}|..\\BobCorn.Infrastructure\\BobCorn.Infrastructure.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.infrastructure\\sqlscripts\\clientpurchasestate\\20-04-2026.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{198D40C8-29A5-4B1C-A349-24FE11477616}|..\\BobCorn.Infrastructure\\BobCorn.Infrastructure.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.infrastructure\\sqlscripts\\cornpurchase\\20-04-2026.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1AA136E4-4280-49B5-9EE3-378C29542C34}|..\\BobCorn.Application\\BobCorn.Application.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.application\\usecases\\purchasecorn\\purchasecornhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1AA136E4-4280-49B5-9EE3-378C29542C34}|..\\BobCorn.Application\\BobCorn.Application.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.application\\usecases\\purchasecorn\\purchaseresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E5C3BA-656E-42F1-AE84-2E3ED3FA240E}|BobCorn.API.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.api\\controllers\\corncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1E5C3BA-656E-42F1-AE84-2E3ED3FA240E}|BobCorn.API.csproj|solutionrelative:controllers\\corncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{198D40C8-29A5-4B1C-A349-24FE11477616}|..\\BobCorn.Infrastructure\\BobCorn.Infrastructure.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.infrastructure\\persistence\\cornpurchaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E5C3BA-656E-42F1-AE84-2E3ED3FA240E}|BobCorn.API.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1E5C3BA-656E-42F1-AE84-2E3ED3FA240E}|BobCorn.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E5C3BA-656E-42F1-AE84-2E3ED3FA240E}|BobCorn.API.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1E5C3BA-656E-42F1-AE84-2E3ED3FA240E}|BobCorn.API.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E5C3BA-656E-42F1-AE84-2E3ED3FA240E}|BobCorn.API.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1E5C3BA-656E-42F1-AE84-2E3ED3FA240E}|BobCorn.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E952F41-004E-4DC6-A798-ACA297A8124E}|..\\BobCorn.API.UnitTests\\BobCorn.API.UnitTests.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.api.unittests\\corncontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{198D40C8-29A5-4B1C-A349-24FE11477616}|..\\BobCorn.Infrastructure\\BobCorn.Infrastructure.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.infrastructure\\sqlscripts\\clientpurchasestate\\20-04-2026.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{198D40C8-29A5-4B1C-A349-24FE11477616}|..\\BobCorn.Infrastructure\\BobCorn.Infrastructure.csproj|c:\\users\\asus\\source\\repos\\bobcorn\\bobcorn.infrastructure\\sqlscripts\\cornpurchase\\20-04-2026.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20-04-2026.sql ",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Infrastructure\\SqlScripts\\CornPurchase\\20-04-2026.sql",
+              "RelativeDocumentMoniker": "..\\BobCorn.Infrastructure\\SqlScripts\\CornPurchase\\20-04-2026.sql",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Infrastructure\\SqlScripts\\CornPurchase\\20-04-2026.sql",
+              "RelativeToolTip": "..\\BobCorn.Infrastructure\\SqlScripts\\CornPurchase\\20-04-2026.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-04-22T00:11:35.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20-04-2026.sql ",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Infrastructure\\SqlScripts\\ClientPurchaseState\\20-04-2026.sql",
+              "RelativeDocumentMoniker": "..\\BobCorn.Infrastructure\\SqlScripts\\ClientPurchaseState\\20-04-2026.sql",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Infrastructure\\SqlScripts\\ClientPurchaseState\\20-04-2026.sql",
+              "RelativeToolTip": "..\\BobCorn.Infrastructure\\SqlScripts\\ClientPurchaseState\\20-04-2026.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-04-22T00:11:33.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PurchaseResult.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Application\\UseCases\\PurchaseCorn\\PurchaseResult.cs",
+              "RelativeDocumentMoniker": "..\\BobCorn.Application\\UseCases\\PurchaseCorn\\PurchaseResult.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Application\\UseCases\\PurchaseCorn\\PurchaseResult.cs",
+              "RelativeToolTip": "..\\BobCorn.Application\\UseCases\\PurchaseCorn\\PurchaseResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T23:57:52.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PurchaseCornHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Application\\UseCases\\PurchaseCorn\\PurchaseCornHandler.cs",
+              "RelativeDocumentMoniker": "..\\BobCorn.Application\\UseCases\\PurchaseCorn\\PurchaseCornHandler.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Application\\UseCases\\PurchaseCorn\\PurchaseCornHandler.cs",
+              "RelativeToolTip": "..\\BobCorn.Application\\UseCases\\PurchaseCorn\\PurchaseCornHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T23:57:50.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CornPurchaseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Infrastructure\\Persistence\\CornPurchaseRepository.cs",
+              "RelativeDocumentMoniker": "..\\BobCorn.Infrastructure\\Persistence\\CornPurchaseRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.Infrastructure\\Persistence\\CornPurchaseRepository.cs",
+              "RelativeToolTip": "..\\BobCorn.Infrastructure\\Persistence\\CornPurchaseRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T23:51:49.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAIwAsAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T23:38:13.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-21T23:35:18.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-21T23:33:52.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CornController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API\\Controllers\\CornController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CornController.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API\\Controllers\\CornController.cs",
+              "RelativeToolTip": "Controllers\\CornController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T19:36:21.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CornControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API.UnitTests\\CornControllerTests.cs",
+              "RelativeDocumentMoniker": "..\\BobCorn.API.UnitTests\\CornControllerTests.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BobCorn\\BobCorn.API.UnitTests\\CornControllerTests.cs",
+              "RelativeToolTip": "..\\BobCorn.API.UnitTests\\CornControllerTests.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAcwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T06:59:58.095Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

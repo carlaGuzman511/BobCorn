@@ -1,0 +1,4 @@
+CREATE TABLE ClientPurchaseState (
+    ClientId NVARCHAR(100) PRIMARY KEY,
+    LastPurchaseAt DATETIMEOFFSET NOT NULL
+);

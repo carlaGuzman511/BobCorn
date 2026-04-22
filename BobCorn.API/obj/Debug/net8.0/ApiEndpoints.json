@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "BobCorn.API.Controllers.CornController",
+    "Method": "Purchase",
+    "RelativePath": "api/corn/purchase",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
