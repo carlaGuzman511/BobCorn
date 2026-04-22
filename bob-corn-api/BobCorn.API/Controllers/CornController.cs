@@ -1,4 +1,4 @@
-﻿using BobCorn.Application.Abstractions.Persistence;
+﻿using BobCorn.API.Models;
 using BobCorn.Application.UseCases.PurchaseCorn;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,20 +27,11 @@ namespace BobCorn.API.Controllers
                 Response.Headers["Retry-After"] =
                     ((int)(result.NextAllowedAt.Value - DateTimeOffset.UtcNow).TotalSeconds).ToString();
 
-                return StatusCode(429, new
-                {
-                    message = "Too many requests",
-                    totalPurchased = result.TotalPurchased,
-                    nextAllowedAt = result.NextAllowedAt
-                });
+                return StatusCode(429, new PurchaseResponse
+                ("Too many requests", result.TotalPurchased, result.NextAllowedAt));
             }
 
-            return Ok(new
-            {
-                message = "Corn purchased",
-                totalPurchased = result.TotalPurchased,
-                nextAllowedAt = result.NextAllowedAt
-            });
+            return Ok(new PurchaseResponse("Corn purchased", result.TotalPurchased, result.NextAllowedAt));
         }
 
         private string GetClientId()

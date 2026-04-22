@@ -28,7 +28,7 @@ namespace BobCorn.Infrastructure.Adapters
             using var connection = _factory.CreateConnection();
             connection.Open();
 
-            using var transaction = connection.BeginTransaction(IsolationLevel.ReadCommitted);
+            using var transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
             try
             {
@@ -36,7 +36,7 @@ namespace BobCorn.Infrastructure.Adapters
 
                 var lastPurchase = await connection.QuerySingleOrDefaultAsync<DateTimeOffset?>(
                     @"SELECT LastPurchaseAt
-                      FROM ClientPurchaseState WITH (UPDLOCK, ROWLOCK)
+                      FROM ClientPurchaseState
                       WHERE ClientId = @ClientId",
                     new { ClientId = clientId },
                     transaction);
@@ -77,16 +77,17 @@ namespace BobCorn.Infrastructure.Adapters
 
                 return (true, now.AddMinutes(1));
             }
-            catch (SqlException ex) when (ex.Number == 2627)
+            catch (SqlException ex)
             {
                 transaction.Rollback();
 
                 return (false, DateTimeOffset.UtcNow.AddMinutes(1));
             }
-            catch
+            catch(Exception e)
             {
                 transaction.Rollback();
-                throw;
+
+                return (false, DateTimeOffset.UtcNow.AddMinutes(1));
             }
         }
     }

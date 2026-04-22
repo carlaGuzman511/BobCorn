@@ -1,4 +1,5 @@
 using BobCorn.API.Controllers;
+using BobCorn.API.Models;
 using BobCorn.Application.Abstractions.Persistence;
 using BobCorn.Application.UseCases.PurchaseCorn;
 using FluentAssertions;
@@ -49,9 +50,9 @@ namespace BobCorn.API.UnitTests
             okResult.Should().NotBeNull();
             okResult!.StatusCode.Should().Be(200);
 
-            dynamic body = okResult.Value!;
-            ((int)body.totalPurchased).Should().Be(totalPurchased);
-            ((DateTimeOffset)body.nextAllowedAt).Should().Be(nextAllowedAt);
+            var response = okResult.Value as PurchaseResponse;
+            response.TotalPurchased.Should().Be(totalPurchased);
+            response.NextAllowedAt.Should().Be(nextAllowedAt);
         }
 
         [Fact]
