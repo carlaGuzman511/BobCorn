@@ -2,7 +2,7 @@
 
 ## 1. Video Link
 
-* 
+* https://jam.dev/c/e26d96a9-2706-4c8a-80d8-bb076c64fd6e
 
 ## 2. Overview
 
